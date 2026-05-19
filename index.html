@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Majoration</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: radial-gradient(circle at top left, rgba(220,38,38,.22), transparent 30%), #050505;
+      color: white;
+    }
+    header {
+      padding: 32px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .hero {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(15,15,15,.88);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(127,29,29,.25);
+    }
+    h1 {
+      font-size: clamp(42px, 8vw, 82px);
+      margin: 10px 0;
+      letter-spacing: -3px;
+    }
+    h1 span { color: #ef4444; }
+    .subtitle { color: #c7c7c7; font-size: 18px; max-width: 850px; line-height: 1.6; }
+    .badges { display: flex; flex-wrap: wrap; gap: 10px; }
+    .badge {
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 999px;
+      padding: 7px 12px;
+      color: #d4d4d4;
+      font-size: 14px;
+    }
+    .badge.red { border-color: rgba(239,68,68,.55); color: #fca5a5; background: rgba(239,68,68,.1); }
+    main { max-width: 1200px; margin: auto; padding: 0 20px 50px; }
+    .grid { display: grid; gap: 18px; }
+    .stats { grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); margin-bottom: 24px; }
+    .card {
+      background: rgba(15,15,15,.82);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      padding: 20px;
+    }
+    .card.red { border-color: rgba(239,68,68,.35); background: rgba(127,29,29,.18); }
+    .stat-value { font-size: 34px; font-weight: 900; }
+    .stat-label { color: #a3a3a3; margin-top: 4px; font-size: 14px; }
+    .section-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 28px 0 14px; }
+    .section-title h2 { margin: 0; font-size: 26px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    button {
+      background: #080808;
+      color: #ddd;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      padding: 9px 13px;
+      cursor: pointer;
+    }
+    button.active, button:hover { background: #dc2626; color: white; border-color: #ef4444; }
+    .layout { display: grid; grid-template-columns: 260px 1fr; gap: 18px; }
+    .days-nav { position: sticky; top: 16px; align-self: start; }
+    .day-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 8px;
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .day-btn.active { background: rgba(220,38,38,.18); border-color: rgba(239,68,68,.6); }
+    .day-focus { font-size: 12px; color: #999; margin-top: 4px; }
+    .day-card { display: none; }
+    .day-card.active { display: block; }
+    .phase { color: #f87171; text-transform: uppercase; letter-spacing: .18em; font-size: 13px; }
+    .day-title { font-size: 30px; margin: 6px 0 4px; font-weight: 900; }
+    .focus { color: #aaa; margin-bottom: 18px; }
+    .task {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.34);
+    }
+    .task.max { border-color: rgba(239,68,68,.45); background: rgba(127,29,29,.18); }
+    .check {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.25);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .task.done { opacity: .55; }
+    .task.done .check { background: #dc2626; border-color: #ef4444; }
+    .task.done h3 { text-decoration: line-through; }
+    .meta { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 6px; }
+    .pill {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      color: #aaa;
+    }
+    .pill.subject { color: white; }
+    .pill.maths { border-color: rgba(239,68,68,.6); background: rgba(239,68,68,.12); color: #fca5a5; }
+    .pill.esh { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.08); }
+    .pill.max { background: #dc2626; border-color: #ef4444; color: white; font-weight: 800; }
+    .task h3 { margin: 0; font-size: 18px; }
+    .task p { margin: 6px 0 0; color: #aaa; line-height: 1.5; }
+    .chapters { grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); }
+    .chapter { padding: 12px; border-radius: 16px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); }
+    .chapter.faible { border-color: rgba(239,68,68,.35); background: rgba(127,29,29,.16); }
+    .chapter.neutre { background: rgba(80,80,80,.25); }
+    .chapter strong { display: block; margin-bottom: 5px; }
+    .small { color: #aaa; font-size: 14px; line-height: 1.5; }
+    @media (max-width: 850px) {
+      .layout { grid-template-columns: 1fr; }
+      .days-nav { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <div class="badges">
+        <div class="badge red">Road to top 1</div>
+        <div class="badge">Concours blanc — 2 juin</div>
+        <div class="badge">Coucher 22h30</div>
+      </div>
+      <h1>Majoration<span>.</span></h1>
+      <p class="subtitle">Planning intensif pour redevenir top 1 : maths comme levier principal, ESH en densification, matières fortes en entretien stratégique.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid stats">
+      <div class="card red"><div class="stat-value" id="progress">0%</div><div class="stat-label">Progression totale</div></div>
+      <div class="card"><div class="stat-value" id="doneCount">0</div><div class="stat-label">Tâches validées</div></div>
+      <div class="card"><div class="stat-value">13–16</div><div class="stat-label">Chapitres ESH prioritaires</div></div>
+      <div class="card red"><div class="stat-value">Top 1</div><div class="stat-label">Objectif final</div></div>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><h2>Règles top 1</h2></div>
+      <div class="grid stats">
+        <div class="small">1. Aucune séance passive : chaque bloc produit une correction, une fiche, un plan ou un exercice.</div>
+        <div class="small">2. Coucher 22h30 : la fraîcheur mentale vaut plus qu’une heure fatiguée.</div>
+        <div class="small">3. Maths = facteur multiplicateur. Les structures doivent être reconnues instantanément.</div>
+        <div class="small">4. ESH = densité : auteurs, mécanismes, exemples, transitions.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Planning détaillé</h2>
+        <div class="filters" id="filters"></div>
+      </div>
+      <div class="layout">
+        <aside class="card days-nav" id="daysNav"></aside>
+        <div id="planning"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><h2>Carte des chapitres maths</h2></div>
+      <div class="grid chapters" id="chapters"></div>
+    </section>
+  </main>
+
+  <script>
+    const chapters = [
+      [1, "Raisonnements et calculs", "fort"], [2, "Suites réelles", "neutre"], [3, "Ensembles et applications", "fort"],
+      [4, "Limite et continuité en un point d'une fonction de R dans R", "fort"], [5, "Étude globale des fonctions de R dans R", "fort"],
+      [6, "Calcul matriciel", "neutre"], [7, "Systèmes linéaires", "faible"], [8, "Fonctions polynômes", "faible"],
+      [9, "Probabilités sur un univers fini", "faible"], [10, "Dérivation", "fort"], [11, "Intégration sur un segment", "fort"],
+      [12, "Espaces vectoriels", "faible"], [13, "Compléments sur les espaces vectoriels", "faible"],
+      [14, "Équivalence et négligeabilité", "faible"], [15, "Séries numériques", "faible"], [16, "Espace probabilisé", "faible"],
+      [17, "Variables aléatoires réelles discrètes", "faible"], [18, "Applications linéaires", "faible"]
+    ];
+
+    const days = [
+      { date: "Lundi 18 mai", phase: "Reconstruction", focus: "Polynômes + lancement ESH 13", tasks: [
+        ["17h15–18h15", "Maths", "Anki actif", "Chap 8 : Fonctions polynômes + Chap 12 : Espaces vectoriels", "haute"],
+        ["19h00–20h15", "Maths", "Chap 8 : Fonctions polynômes", "Degré, coefficient dominant, racines, multiplicité, division euclidienne + 5 exercices rapides", "max"],
+        ["20h15–21h00", "ESH", "Chapitre 13", "Comprendre la structure globale + créer les premières cartes Anki", "haute"],
+        ["21h00–22h15", "Maths", "DS6 — Exercice 1", "Tchebychev : récurrence sur polynômes, composition, parité", "max"]
+      ]},
+      { date: "Mardi 19 mai", phase: "Reconstruction", focus: "Espaces vectoriels", tasks: [
+        ["17h15–18h15", "Maths", "Anki actif", "Chap 12 : Espaces vectoriels + Chap 13 : Compléments", "haute"],
+        ["18h30–20h00", "Maths", "Chap 12 : Espaces vectoriels", "SEV, familles libres, génératrices, bases, dimension", "max"],
+        ["20h00–20h45", "ESH", "Anki anciens chapitres", "Rotation chapitres 1–6 : rappel actif, pas de relecture passive", "moyenne"],
+        ["20h45–21h30", "ESH", "Chapitre 13", "Auteurs, mécanismes, exemples, cartes concours", "haute"],
+        ["21h30–22h15", "Maths", "DS8 — Exercice 1", "SEV de matrices, base, dimension, supplémentaire", "max"]
+      ]},
+      { date: "Mercredi 20 mai", phase: "Reconstruction", focus: "Applications linéaires", tasks: [
+        ["16h15–17h15", "Maths", "Anki actif", "Chp 18 : Applications linéaires + Chap 7 : Systèmes linéaires", "haute"],
+        ["19h00–20h15", "Maths", "Chp 18 : Applications linéaires", "Noyau, image, rang, injectivité, surjectivité", "max"],
+        ["21h00–21h45", "ESH", "Chapitre 14", "Lecture active + compréhension globale", "haute"],
+        ["21h45–22h15", "ESH", "Anki Chapitre 13", "Récitation active + correction des cartes faibles", "haute"]
+      ]},
+      { date: "Jeudi 21 mai", phase: "Reconstruction", focus: "Équivalents + ESH 14", tasks: [
+        ["13h00–13h45", "ESH", "Anki anciens chapitres", "Rotation chapitres 7–12", "moyenne"],
+        ["17h15–18h30", "Maths", "Chap 14 : Équivalence et négligeabilité", "Équivalents usuels, domination, négligeabilité, compositions", "max"],
+        ["20h00–20h45", "ESH", "Chapitre 14", "Création cartes : auteurs, chiffres, mécanismes", "haute"],
+        ["20h45–22h15", "Maths", "DS8 — Exercice 3", "Comparaison intégrale, asymptotiques, séries/logarithmes", "max"]
+      ]},
+      { date: "Vendredi 22 mai", phase: "Reconstruction", focus: "Séries + correction active", tasks: [
+        ["14h05–15h40", "Maths", "Correction active DS8 ex3", "Carnet d’erreurs obligatoire : cause, réflexe, méthode", "max"],
+        ["15h45–16h30", "ESH", "Chapitre 15", "Comprendre le plan du chapitre + notions clés", "haute"],
+        ["16h30–17h15", "ESH", "Anki Chap 13–14", "Rappel actif + cartes difficiles", "haute"],
+        ["21h00–22h15", "Maths", "Chap 15 : Séries numériques", "Géométriques, Riemann, comparaison, équivalent", "max"]
+      ]},
+      { date: "Samedi 23 mai", phase: "Reconstruction", focus: "Matrices + polynômes", tasks: [
+        ["14h00–15h30", "Maths", "DS5 — Exercice polynômes", "Récurrence sur polynômes, coefficients, structure", "max"],
+        ["16h00–17h00", "Maths", "Correction active DS5", "Reprendre sans correction les questions ratées", "haute"],
+        ["17h15–18h15", "ESH", "Chapitre 15", "Création cartes concours : auteurs, mécanismes, exemples", "haute"],
+        ["21h00–22h15", "Maths", "DS5 — Problème 2 partie A", "Puissances de matrices, diagonalisation implicite, suites récurrentes matricielles", "max"]
+      ]},
+      { date: "Dimanche 24 mai", phase: "Matières secondaires + consolidation", focus: "Langues, philo, lettres, croissance", tasks: [
+        ["09h00–09h45", "Anglais", "Correction active erreurs DS", "Repérer erreurs récurrentes, temps, syntaxe, formulations faibles", "moyenne"],
+        ["09h45–10h30", "Espagnol", "Correction active erreurs DS", "Subjonctif, concordance des temps, fautes de langue, réécriture correcte", "haute"],
+        ["10h45–12h15", "Maths", "Chap 16 + Chap 17", "Espace probabilisé + variables aléatoires réelles discrètes", "max"],
+        ["14h00–15h00", "ESH", "Bonne copie concours — croissance", "Repérer problématisation, transitions, références, exemples", "haute"],
+        ["15h00–16h00", "ESH", "Sujet croissance", "Problématique + plan détaillé + auteurs + exemples", "max"],
+        ["16h00–16h45", "Philo", "Livre + Anki", "Concepts, auteurs, articulations, problématiques", "moyenne"],
+        ["17h00–18h00", "Lettres", "Bonne copie", "Transitions, citations, structure, problématisation", "moyenne"],
+        ["18h00–19h00", "Maths", "DS6 — Probabilités", "Matrices de transition, lois, espérance", "haute"],
+        ["21h00–22h15", "Maths", "Correction + carnet d’erreurs", "Erreurs probas + méthodes générales", "haute"]
+      ]},
+      { date: "Lundi 25 mai", phase: "Consolidation concours", focus: "DS7 + ESH 16", tasks: [
+        ["17h15–18h15", "Maths", "Anki actif", "Chap 16, Chap 17, Chp 18", "haute"],
+        ["19h00–20h15", "Maths", "DS7 — Partie I", "Bijection, réciproque, dérivabilité, rédaction analyse", "haute"],
+        ["20h15–21h00", "ESH", "Chapitre 16", "Compréhension globale + structure logique", "haute"],
+        ["21h00–22h15", "Maths", "DS7 — Partie II", "Suites implicites, TVI, monotonie", "max"]
+      ]},
+      { date: "Mardi 26 mai", phase: "Consolidation concours", focus: "Contraction + probas", tasks: [
+        ["17h15–18h15", "Maths", "Anki actif", "Chap 7, Chap 8, Chap 12", "haute"],
+        ["18h30–20h00", "Maths", "DS7 — Partie III", "Contraction, suites récurrentes, convergence rapide", "max"],
+        ["20h00–20h45", "ESH", "Anki anciens chapitres", "Rotation générale : anciens chapitres à maintenir", "moyenne"],
+        ["20h45–21h30", "ESH", "Chapitre 16", "Cartes : auteurs, mécanismes, statistiques", "haute"],
+        ["21h30–22h15", "Maths", "DS7 — Exercice 2", "Chaînes probabilistes, espérance récurrente", "max"]
+      ]},
+      { date: "Mercredi 27 mai", phase: "Consolidation concours", focus: "DS6 complet", tasks: [
+        ["16h15–17h15", "Maths", "Anki actif", "Chap 14, Chap 15, Chap 17", "haute"],
+        ["19h00–20h15", "Maths", "DS complet — DS6", "Conditions réelles ou semi-réelles selon temps disponible", "max"],
+        ["21h00–21h45", "ESH", "Révisions actives", "Chapitres 13–14 : feuille blanche + mécanismes", "haute"],
+        ["21h45–22h15", "ESH", "Anki Chap 15–16", "Activation mémoire", "haute"]
+      ]},
+      { date: "Jeudi 28 mai", phase: "Consolidation concours", focus: "DS7 complet", tasks: [
+        ["13h00–13h45", "ESH", "Bonne copie concours", "Repérer formulations, transitions, problématisation", "haute"],
+        ["17h15–18h30", "Maths", "Chapitres récents", "Chap 14, 15, 16, 17, 18 : exercices courts concours", "max"],
+        ["20h00–20h45", "ESH", "Révisions actives", "Chapitres 15–16 : feuille blanche + auteurs", "haute"],
+        ["20h45–22h15", "Maths", "DS complet — DS7", "Conditions réelles ou semi-réelles", "max"]
+      ]},
+      { date: "Vendredi 29 mai", phase: "Consolidation concours", focus: "Croissance + algèbre finale", tasks: [
+        ["14h05–15h40", "Maths", "Correction active DS7", "Carnet d’erreurs : structures, calculs, rédaction", "max"],
+        ["15h45–16h30", "ESH", "Sujet croissance", "Introduction complète + transitions + conclusion", "max"],
+        ["16h30–17h15", "ESH", "Anki global", "Chapitres 13–16 + anciens chapitres faibles", "haute"],
+        ["21h00–22h15", "Maths", "Chap 12 + Chp 18", "Noyau, image, dimension, supplémentaires", "max"]
+      ]},
+      { date: "Samedi 30 mai", phase: "Mode performance", focus: "DS8 complet", tasks: [
+        ["14h00–18h00", "Maths", "DS complet — DS8", "Conditions exactes concours : rédaction propre, gestion du temps", "max"],
+        ["18h30–19h15", "ESH", "Relecture chapitres 13–16", "Vision globale + auteurs clés", "haute"],
+        ["21h00–22h15", "Maths", "Correction ciblée DS8", "Erreurs majeures + carnet d’erreurs", "max"]
+      ]},
+      { date: "Dimanche 31 mai", phase: "Mode performance + secondaires", focus: "Réglage final", tasks: [
+        ["09h00–09h45", "Anglais", "Correction active erreurs DS", "Réécrire les phrases incorrectes + 10 formulations premium", "moyenne"],
+        ["09h45–10h30", "Espagnol", "Correction active erreurs DS", "Fautes de langue, conjugaisons, subjonctif, concordance", "haute"],
+        ["10h45–12h15", "Maths", "Chapitres récents", "Chap 14, 15, 16, 17, 18 : relecture + exercices rapides", "max"],
+        ["14h00–15h00", "ESH", "Anki global", "Tous chapitres + focus chap 13–16", "haute"],
+        ["15h00–16h00", "ESH", "Plans rapides", "3 problématiques + 3 plans rapides", "max"],
+        ["16h00–16h45", "Philo", "Livre + Anki", "Notions, auteurs, articulations finales", "moyenne"],
+        ["17h00–18h00", "Lettres", "DS 1", "Plan détaillé + intro complète", "moyenne"],
+        ["18h00–19h00", "Lettres", "DS 2", "Plan détaillé + transitions + conclusion", "moyenne"],
+        ["21h00–22h15", "Maths", "Carnet d’erreurs final", "Théorèmes, erreurs classiques, réflexes à ne plus rater", "max"]
+      ]},
+      { date: "Lundi 1er juin", phase: "Activation légère", focus: "Arriver frais", tasks: [
+        ["17h15–18h15", "Maths", "Anki léger global", "Tous chapitres, sans surcharge", "haute"],
+        ["19h00–20h15", "Maths", "Questions classiques", "EV, applications linéaires, probabilités, séries, équivalents", "haute"],
+        ["20h15–20h45", "ESH", "Anki léger", "Activation mémoire, auteurs, mécanismes", "haute"],
+        ["20h45–21h30", "ESH", "Relecture finale", "Auteurs, statistiques, plans, transitions", "haute"],
+        ["21h30–22h00", "ESH", "Bonne copie légère", "Lecture calme, pas d’apprentissage lourd", "moyenne"]
+      ]},
+      { date: "Mardi 2 juin", phase: "Concours blanc", focus: "Exécution", tasks: [
+        ["Avant épreuve", "Maths", "Activation mentale", "Relire uniquement carnet d’erreurs + 5 réflexes majeurs", "max"],
+        ["Pendant épreuve", "Maths", "Stratégie top 1", "Sécuriser les questions faciles, encadrer, rédiger sobrement, ne pas bloquer", "max"]
+      ]}
+    ];
+
+    let activeDay = 0;
+    let activeFilter = "Tout";
+    let done = JSON.parse(localStorage.getItem("majoration_done") || "{}");
+
+    const filters = ["Tout", "Maths", "ESH", "Anglais", "Espagnol", "Philo", "Lettres"];
+    const filtersEl = document.getElementById("filters");
+    const navEl = document.getElementById("daysNav");
+    const planningEl = document.getElementById("planning");
+    const chaptersEl = document.getElementById("chapters");
+
+    function renderFilters() {
+      filtersEl.innerHTML = "";
+      filters.forEach(f => {
+        const btn = document.createElement("button");
+        btn.textContent = f;
+        btn.className = f === activeFilter ? "active" : "";
+        btn.onclick = () => { activeFilter = f; render(); };
+        filtersEl.appendChild(btn);
+      });
+    }
+
+    function renderNav() {
+      navEl.innerHTML = "";
+      days.forEach((d, i) => {
+        const btn = document.createElement("button");
+        btn.className = "day-btn " + (i === activeDay ? "active" : "");
+        btn.innerHTML = `<strong>${d.date}</strong><div class="day-focus">${d.focus}</div>`;
+        btn.onclick = () => { activeDay = i; render(); };
+        navEl.appendChild(btn);
+      });
+    }
+
+    function renderPlanning() {
+      planningEl.innerHTML = "";
+      const visibleDays = activeFilter === "Tout" ? [days[activeDay]] : days.map((d, i) => ({...d, originalIndex:i, tasks:d.tasks.filter(t => t[1] === activeFilter)})).filter(d => d.tasks.length);
+      visibleDays.forEach((d) => {
+        const originalIndex = d.originalIndex ?? activeDay;
+        const card = document.createElement("div");
+        card.className = "card day-card active";
+        card.innerHTML = `<div class="phase">${d.phase}</div><div class="day-title">${d.date}</div><div class="focus">${d.focus}</div>`;
+        d.tasks.forEach((t) => {
+          const realIndex = days[originalIndex].tasks.findIndex(x => x[0] === t[0] && x[1] === t[1] && x[2] === t[2]);
+          const key = `${originalIndex}-${realIndex}`;
+          const task = document.createElement("div");
+          task.className = `task ${t[4] === "max" ? "max" : ""} ${done[key] ? "done" : ""}`;
+          const subjClass = t[1] === "Maths" ? "maths" : t[1] === "ESH" ? "esh" : "";
+          task.innerHTML = `
+            <div class="check">${done[key] ? "✓" : ""}</div>
+            <div>
+              <div class="meta">
+                <span class="pill">${t[0]}</span>
+                <span class="pill subject ${subjClass}">${t[1]}</span>
+                ${t[4] === "max" ? '<span class="pill max">MAX</span>' : ''}
+              </div>
+              <h3>${t[2]}</h3>
+              <p>${t[3]}</p>
+            </div>
+          `;
+          task.querySelector(".check").onclick = () => {
+            done[key] = !done[key];
+            localStorage.setItem("majoration_done", JSON.stringify(done));
+            render();
+          };
+          card.appendChild(task);
+        });
+        planningEl.appendChild(card);
+      });
+    }
+
+    function renderChapters() {
+      chaptersEl.innerHTML = "";
+      chapters.forEach(([n, name, status]) => {
+        const el = document.createElement("div");
+        el.className = `chapter ${status}`;
+        el.innerHTML = `<strong>Chap ${n}</strong><div class="small">${name}</div><div class="small">Statut : ${status}</div>`;
+        chaptersEl.appendChild(el);
+      });
+    }
+
+    function updateStats() {
+      const total = days.reduce((s,d) => s + d.tasks.length, 0);
+      const count = Object.values(done).filter(Boolean).length;
+      document.getElementById("doneCount").textContent = `${count}/${total}`;
+      document.getElementById("progress").textContent = `${Math.round(count / total * 100)}%`;
+    }
+
+    function render() {
+      renderFilters();
+      renderNav();
+      renderPlanning();
+      renderChapters();
+      updateStats();
+    }
+
+    render();
+  </script>
+</body>
+</html>
