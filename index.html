@@ -21,7 +21,7 @@
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(15,15,15,.88);
       border-radius: 28px;
-      padding: 28px;
+      padding: 42px;
       box-shadow: 0 20px 60px rgba(127,29,29,.25);
     }
     h1 {
@@ -42,17 +42,17 @@
     .badge.red { border-color: rgba(239,68,68,.55); color: #fca5a5; background: rgba(239,68,68,.1); }
     main { max-width: 1200px; margin: auto; padding: 0 20px 50px; }
     .grid { display: grid; gap: 18px; }
-    .stats { grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); margin-bottom: 24px; }
+    .stats { grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); margin-bottom: 36px; gap: 22px; }
     .card {
       background: rgba(15,15,15,.82);
       border: 1px solid rgba(255,255,255,.12);
       border-radius: 24px;
-      padding: 20px;
+      padding: 28px;
     }
     .card.red { border-color: rgba(239,68,68,.35); background: rgba(127,29,29,.18); }
     .stat-value { font-size: 34px; font-weight: 900; }
     .stat-label { color: #a3a3a3; margin-top: 4px; font-size: 14px; }
-    .section-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 28px 0 14px; }
+    .section-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 46px 0 22px; }
     .section-title h2 { margin: 0; font-size: 26px; }
     .filters { display: flex; flex-wrap: wrap; gap: 8px; }
     button {
@@ -64,15 +64,15 @@
       cursor: pointer;
     }
     button.active, button:hover { background: #dc2626; color: white; border-color: #ef4444; }
-    .layout { display: grid; grid-template-columns: 260px 1fr; gap: 18px; }
-    .days-nav { position: sticky; top: 16px; align-self: start; }
+    .layout { display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: start; }
+    .days-nav { position: sticky; top: 16px; align-self: start; padding: 18px; }
     .day-btn {
       display: block;
       width: 100%;
       text-align: left;
-      margin-bottom: 8px;
-      border-radius: 16px;
-      padding: 12px;
+      margin-bottom: 14px;
+      border-radius: 18px;
+      padding: 18px;
     }
     .day-btn.active { background: rgba(220,38,38,.18); border-color: rgba(239,68,68,.6); }
     .day-focus { font-size: 12px; color: #999; margin-top: 4px; }
@@ -84,9 +84,9 @@
     .task {
       display: grid;
       grid-template-columns: 34px 1fr;
-      gap: 12px;
-      padding: 15px;
-      margin: 10px 0;
+      gap: 16px;
+      padding: 22px;
+      margin: 18px 0;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.34);
@@ -117,8 +117,8 @@
     .pill.maths { border-color: rgba(239,68,68,.6); background: rgba(239,68,68,.12); color: #fca5a5; }
     .pill.esh { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.08); }
     .pill.max { background: #dc2626; border-color: #ef4444; color: white; font-weight: 800; }
-    .task h3 { margin: 0; font-size: 18px; }
-    .task p { margin: 6px 0 0; color: #aaa; line-height: 1.5; }
+    .task h3 { margin: 0; font-size: 20px; line-height: 1.35; }
+    .task p { margin: 10px 0 0; color: #aaa; line-height: 1.7; font-size: 15px; }
     .chapters { grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); }
     .chapter { padding: 12px; border-radius: 16px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); }
     .chapter.faible { border-color: rgba(239,68,68,.35); background: rgba(127,29,29,.16); }
@@ -173,10 +173,7 @@
       </div>
     </section>
 
-    <section>
-      <div class="section-title"><h2>Carte des chapitres maths</h2></div>
-      <div class="grid chapters" id="chapters"></div>
-    </section>
+    
   </main>
 
   <script>
