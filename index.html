@@ -9,7 +9,10 @@
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
-      background: radial-gradient(circle at top left, rgba(220,38,38,.22), transparent 30%), #050505;
+      background:
+        radial-gradient(circle at top left, rgba(244,63,94,.24), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(245,158,11,.14), transparent 24%),
+        linear-gradient(135deg, #050505 0%, #0a0a0b 45%, #160507 100%);
       color: white;
     }
     header {
@@ -19,17 +22,17 @@
     }
     .hero {
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(15,15,15,.88);
+      background: linear-gradient(145deg, rgba(24,24,27,.92), rgba(9,9,11,.92));
       border-radius: 28px;
       padding: 42px;
-      box-shadow: 0 20px 60px rgba(127,29,29,.25);
+      box-shadow: 0 28px 80px rgba(136,19,55,.28), inset 0 1px 0 rgba(255,255,255,.06);
     }
     h1 {
       font-size: clamp(42px, 8vw, 82px);
       margin: 10px 0;
       letter-spacing: -3px;
     }
-    h1 span { color: #ef4444; }
+    h1 span { color: #f43f5e; }
     .subtitle { color: #c7c7c7; font-size: 18px; max-width: 850px; line-height: 1.6; }
     .badges { display: flex; flex-wrap: wrap; gap: 10px; }
     .badge {
@@ -39,17 +42,17 @@
       color: #d4d4d4;
       font-size: 14px;
     }
-    .badge.red { border-color: rgba(239,68,68,.55); color: #fca5a5; background: rgba(239,68,68,.1); }
+    .badge.red { border-color: rgba(244,63,94,.6); color: #fecdd3; background: linear-gradient(135deg, rgba(244,63,94,.18), rgba(245,158,11,.08)); }
     main { max-width: 1200px; margin: auto; padding: 0 20px 50px; }
     .grid { display: grid; gap: 18px; }
     .stats { grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); margin-bottom: 36px; gap: 22px; }
     .card {
-      background: rgba(15,15,15,.82);
-      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(145deg, rgba(24,24,27,.86), rgba(9,9,11,.88));
+      border: 1px solid rgba(255,255,255,.11);
       border-radius: 24px;
       padding: 28px;
     }
-    .card.red { border-color: rgba(239,68,68,.35); background: rgba(127,29,29,.18); }
+    .card.red { border-color: rgba(244,63,94,.42); background: linear-gradient(145deg, rgba(136,19,55,.22), rgba(245,158,11,.08)); }
     .stat-value { font-size: 34px; font-weight: 900; }
     .stat-label { color: #a3a3a3; margin-top: 4px; font-size: 14px; }
     .section-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 46px 0 22px; }
@@ -63,7 +66,7 @@
       padding: 9px 13px;
       cursor: pointer;
     }
-    button.active, button:hover { background: #dc2626; color: white; border-color: #ef4444; }
+    button.active, button:hover { background: linear-gradient(135deg, #e11d48, #f59e0b); color: white; border-color: rgba(251,191,36,.75); box-shadow: 0 8px 24px rgba(225,29,72,.22); }
     .layout { display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: start; }
     .days-nav { position: sticky; top: 16px; align-self: start; padding: 18px; }
     .day-btn {
@@ -74,11 +77,35 @@
       border-radius: 18px;
       padding: 18px;
     }
-    .day-btn.active { background: rgba(220,38,38,.18); border-color: rgba(239,68,68,.6); }
+    .day-btn.active { background: linear-gradient(135deg, rgba(225,29,72,.22), rgba(245,158,11,.08)); border-color: rgba(251,191,36,.65); }
     .day-focus { font-size: 12px; color: #999; margin-top: 4px; }
+    .done-box { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1); }
+    .done-toggle {
+      width: 100%;
+      border-radius: 16px;
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(245,158,11,.06));
+      border: 1px solid rgba(255,255,255,.14);
+      color: #ddd;
+      font-weight: 800;
+      text-align: left;
+    }
+    .done-days { display: none; margin-top: 12px; }
+    .done-days.open { display: block; }
+    .done-day {
+      width: 100%;
+      margin-bottom: 8px;
+      border-radius: 14px;
+      padding: 12px;
+      text-align: left;
+      background: rgba(245,158,11,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      color: #999;
+      text-decoration: line-through;
+    }
     .day-card { display: none; }
     .day-card.active { display: block; }
-    .phase { color: #f87171; text-transform: uppercase; letter-spacing: .18em; font-size: 13px; }
+    .phase { color: #fb7185; text-transform: uppercase; letter-spacing: .18em; font-size: 13px; }
     .day-title { font-size: 30px; margin: 6px 0 4px; font-weight: 900; }
     .focus { color: #aaa; margin-bottom: 18px; }
     .task {
@@ -91,7 +118,7 @@
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.34);
     }
-    .task.max { border-color: rgba(239,68,68,.45); background: rgba(127,29,29,.18); }
+    .task.max { border-color: rgba(251,191,36,.48); background: linear-gradient(135deg, rgba(136,19,55,.22), rgba(120,53,15,.12)); }
     .check {
       width: 28px;
       height: 28px;
@@ -103,7 +130,7 @@
       user-select: none;
     }
     .task.done { opacity: .55; }
-    .task.done .check { background: #dc2626; border-color: #ef4444; }
+    .task.done .check { background: linear-gradient(135deg, #e11d48, #f59e0b); border-color: #fbbf24; }
     .task.done h3 { text-decoration: line-through; }
     .meta { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 6px; }
     .pill {
@@ -114,14 +141,14 @@
       color: #aaa;
     }
     .pill.subject { color: white; }
-    .pill.maths { border-color: rgba(239,68,68,.6); background: rgba(239,68,68,.12); color: #fca5a5; }
-    .pill.esh { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.08); }
-    .pill.max { background: #dc2626; border-color: #ef4444; color: white; font-weight: 800; }
+    .pill.maths { border-color: rgba(244,63,94,.6); background: rgba(244,63,94,.13); color: #fecdd3; }
+    .pill.esh { border-color: rgba(251,191,36,.5); background: rgba(245,158,11,.12); color: #fde68a; }
+    .pill.max { background: linear-gradient(135deg, #e11d48, #f59e0b); border-color: #fbbf24; color: white; font-weight: 800; }
     .task h3 { margin: 0; font-size: 20px; line-height: 1.35; }
     .task p { margin: 10px 0 0; color: #aaa; line-height: 1.7; font-size: 15px; }
     .chapters { grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); }
     .chapter { padding: 12px; border-radius: 16px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); }
-    .chapter.faible { border-color: rgba(239,68,68,.35); background: rgba(127,29,29,.16); }
+    .chapter.faible { border-color: rgba(244,63,94,.35); background: linear-gradient(135deg, rgba(136,19,55,.18), rgba(120,53,15,.08)); }
     .chapter.neutre { background: rgba(80,80,80,.25); }
     .chapter strong { display: block; margin-bottom: 5px; }
     .small { color: #aaa; font-size: 14px; line-height: 1.5; }
@@ -168,7 +195,13 @@
         <div class="filters" id="filters"></div>
       </div>
       <div class="layout">
-        <aside class="card days-nav" id="daysNav"></aside>
+        <aside class="card days-nav">
+          <div id="daysNav"></div>
+          <div class="done-box">
+            <button id="doneToggle" class="done-toggle">Done</button>
+            <div id="doneDays" class="done-days"></div>
+          </div>
+        </aside>
         <div id="planning"></div>
       </div>
     </section>
@@ -298,11 +331,14 @@
 
     let activeDay = 0;
     let activeFilter = "Tout";
+    let showDone = false;
     let done = JSON.parse(localStorage.getItem("majoration_done") || "{}");
 
     const filters = ["Tout", "Maths", "ESH", "Anglais", "Espagnol", "Philo", "Lettres"];
     const filtersEl = document.getElementById("filters");
     const navEl = document.getElementById("daysNav");
+    const doneDaysEl = document.getElementById("doneDays");
+    const doneToggleEl = document.getElementById("doneToggle");
     const planningEl = document.getElementById("planning");
     const chaptersEl = document.getElementById("chapters");
 
@@ -317,9 +353,34 @@
       });
     }
 
+    function isDayDone(dayIndex) {
+      return days[dayIndex].tasks.every((_, taskIndex) => done[`${dayIndex}-${taskIndex}`]);
+    }
+
+    function firstAvailableDay() {
+      const index = days.findIndex((_, i) => !isDayDone(i));
+      return index === -1 ? 0 : index;
+    }
+
     function renderNav() {
       navEl.innerHTML = "";
+      doneDaysEl.innerHTML = "";
+      doneDaysEl.className = "done-days " + (showDone ? "open" : "");
+      doneToggleEl.textContent = showDone ? "Done ▲" : "Done ▼";
+      doneToggleEl.onclick = () => { showDone = !showDone; render(); };
+
+      if (isDayDone(activeDay)) activeDay = firstAvailableDay();
+
       days.forEach((d, i) => {
+        if (isDayDone(i)) {
+          const doneBtn = document.createElement("button");
+          doneBtn.className = "done-day";
+          doneBtn.innerHTML = `<strong>${d.date}</strong><div class="day-focus">${d.focus}</div>`;
+          doneBtn.onclick = () => { activeDay = i; renderPlanning(true); };
+          doneDaysEl.appendChild(doneBtn);
+          return;
+        }
+
         const btn = document.createElement("button");
         btn.className = "day-btn " + (i === activeDay ? "active" : "");
         btn.innerHTML = `<strong>${d.date}</strong><div class="day-focus">${d.focus}</div>`;
@@ -328,9 +389,13 @@
       });
     }
 
-    function renderPlanning() {
+    function renderPlanning(forceActiveDone = false) {
       planningEl.innerHTML = "";
-      const visibleDays = activeFilter === "Tout" ? [days[activeDay]] : days.map((d, i) => ({...d, originalIndex:i, tasks:d.tasks.filter(t => t[1] === activeFilter)})).filter(d => d.tasks.length);
+      const visibleDays = activeFilter === "Tout"
+        ? [days[activeDay]]
+        : days
+            .map((d, i) => ({...d, originalIndex:i, tasks:d.tasks.filter(t => t[1] === activeFilter)}))
+            .filter(d => d.tasks.length && (forceActiveDone || !isDayDone(d.originalIndex)));
       visibleDays.forEach((d) => {
         const originalIndex = d.originalIndex ?? activeDay;
         const card = document.createElement("div");
