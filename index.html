@@ -206,81 +206,147 @@
 
   <script>
     const days = [
-      { date: "Lundi — Semaine 1", phase: "Reconstruction", focus: "Polynômes + ESH 13", tasks: [
-        ["17h15–18h45", "ESH", "Chapitre 13", "Anki final + récitation du plan + auteurs/mécanismes", "max"],
-        ["19h30–21h00", "Maths", "Chap 8 — Polynômes", "Cours Anki + 4 exercices de TD", "max"],
-        ["21h15–22h15", "Maths", "DS5 — Polynômes", "Sujet ciblé + carnet d’erreurs", "haute"]
+      { date: "Mercredi 20 mai", phase: "Lancement", focus: "ESH 13 + équivalents", tasks: [
+        ["16h15–16h45", "Pause", "Décompression", "Goûter, coupure, aucun écran court format", "moyenne"],
+        ["16h45–17h45", "ESH", "Chapitre 13", "40 cartes Anki", "max"],
+        ["17h45–18h15", "ESH", "Bonne copie croissance", "Structure intro + transitions + articulation des parties", "haute"],
+        ["19h00–19h45", "Maths", "Chapitre 14 — Équivalents", "Anki cours", "max"],
+        ["19h45–20h30", "Maths", "TD Chapitre 14", "Ex 1 entier + Ex 2 : 1, 2, 5", "max"],
+        ["20h30–20h45", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["20h45–21h15", "Maths", "Questions classiques", "Équivalents composés + logarithmes", "haute"],
+        ["21h15–22h00", "Maths", "DS anciens", "Erreurs équivalents + rédaction", "haute"]
       ]},
-      { date: "Mardi — Semaine 1", phase: "Reconstruction", focus: "Espaces vectoriels + ESH 13", tasks: [
-        ["17h15–18h45", "ESH", "Chapitre 13 + Anki chap 1", "Feuille blanche + première moitié chap 1 sur Anki", "max"],
-        ["19h30–21h00", "Maths", "Chap 12 — Espaces vectoriels", "Cours Anki + 6 exercices de TD", "max"],
-        ["21h15–22h15", "Maths", "DS8 — Exercice 1", "Sujet ciblé + correction active", "haute"]
+      { date: "Jeudi 21 mai", phase: "Reconstruction", focus: "ESH 13 + séries", tasks: [
+        ["16h45–17h15", "Pause", "Décompression", "Coupure après les cours", "moyenne"],
+        ["17h15–18h15", "ESH", "Chapitre 13", "41 cartes restantes", "max"],
+        ["18h15–18h45", "ESH", "Bonne copie", "Problématisation + 3 transitions fortes", "haute"],
+        ["19h30–20h15", "Maths", "Chapitre 15 — Séries numériques", "Anki cours", "max"],
+        ["20h15–21h00", "Maths", "TD Chapitre 15", "Ex 1 + Ex 2 : 1, 2 + Ex 6 : 1, 2", "max"],
+        ["21h00–21h15", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["21h15–22h00", "Maths", "Questions classiques séries", "Séries géométriques + Riemann + convergence", "haute"]
       ]},
-      { date: "Mercredi — Semaine 1", phase: "Reconstruction", focus: "Applications linéaires + ESH 14", tasks: [
-        ["16h15–17h45", "ESH", "Chapitre 14 + Anki chap 1", "Cours + deuxième moitié chap 1 sur Anki", "max"],
-        ["19h00–20h30", "Maths", "Chap 18 — Applications linéaires", "Cours Anki + exercices noyau/image/rang", "max"],
-        ["20h45–22h00", "Maths", "Algèbre ciblée", "Sujet ciblé + carnet d’erreurs", "haute"]
+      { date: "Vendredi 22 mai", phase: "Reconstruction", focus: "Probas + ESH 14", tasks: [
+        ["13h30–14h00", "Pause", "Décompression", "Coupure après les cours", "moyenne"],
+        ["14h00–14h45", "Maths", "Chapitre 16 — Espaces probabilisés", "Anki cours", "max"],
+        ["14h45–15h30", "Maths", "TD Chapitre 16", "Ex 1 + Ex 2 + Ex 5", "max"],
+        ["15h30–15h50", "Pause", "Pause courte", "Déconnexion rapide", "moyenne"],
+        ["15h50–16h30", "Maths", "Questions classiques probabilités", "Indépendance + probabilités conditionnelles + probabilités totales", "haute"],
+        ["16h30–17h00", "Maths", "DS anciens", "Erreurs probabilités", "haute"],
+        ["20h15–20h45", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["20h45–21h45", "ESH", "Chapitre 14", "35 cartes Anki", "max"],
+        ["21h45–22h15", "ESH", "Bonne copie", "Citations + mécanismes économiques", "haute"]
       ]},
-      { date: "Jeudi — Semaine 1", phase: "Reconstruction", focus: "Analyse-synthèse + ESH 14", tasks: [
-        ["17h15–18h45", "Maths", "Analyse-synthèse n°1", "Sujet semi-réel", "max"],
-        ["19h30–20h30", "Maths", "Correction analyse-synthèse", "Correction + carnet d’erreurs", "haute"],
-        ["20h45–22h00", "ESH", "Chapitre 14 + Anki chap 2", "Cartes manquantes + première moitié chap 2 sur Anki", "max"]
+      { date: "Samedi 23 mai", phase: "Reconstruction", focus: "Variables aléatoires + ESH 14", tasks: [
+        ["13h30–14h00", "Pause", "Décompression", "Coupure avant travail", "moyenne"],
+        ["14h00–14h45", "Maths", "Chapitre 17 — Variables aléatoires", "Anki cours", "max"],
+        ["14h45–15h45", "Maths", "TD Chapitre 17", "Ex 1 + Ex 2 + Ex 3", "max"],
+        ["15h45–16h00", "Pause", "Pause courte", "Déconnexion rapide", "moyenne"],
+        ["16h00–16h45", "Maths", "Questions classiques", "Loi géométrique + espérance + variance", "haute"],
+        ["16h45–17h30", "Maths", "DS anciens", "Erreurs variables aléatoires", "haute"],
+        ["20h15–20h45", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["20h45–21h45", "ESH", "Chapitre 14", "35 cartes restantes", "max"],
+        ["21h45–22h15", "ESH", "Bonne copie concours", "Structure + transitions + problématisation", "haute"]
       ]},
-      { date: "Vendredi — Semaine 1", phase: "Reconstruction", focus: "Équivalents + ESH 15", tasks: [
-        ["14h00–15h30", "Maths", "Chap 14 — Équivalents", "Cours Anki + 5 exercices courts", "max"],
-        ["15h50–17h00", "Maths", "Analyse — exercices concours", "Exponentielle/log + correction active", "haute"],
-        ["21h00–22h00", "ESH", "Chapitre 15 + Anki chap 2", "Cours + deuxième moitié chap 2 sur Anki", "max"]
+      { date: "Dimanche 24 mai", phase: "Matières secondaires", focus: "Langues, ESH 15/16, philo, lettres", tasks: [
+        ["9h00–9h45", "Espagnol", "Correction DS", "10 erreurs : correction + règle", "haute"],
+        ["9h45–10h30", "Espagnol", "Conjugaison", "Subjonctif imparfait + conditionnel + tournures fautives", "haute"],
+        ["10h30–10h45", "Pause", "Pause courte", "Coupure", "moyenne"],
+        ["10h45–11h30", "Anglais", "DS 1", "Formulations faibles à remplacer + figures de style", "haute"],
+        ["11h30–12h15", "Anglais", "Grammaire", "Structures avancées + linking words + inversion/emphasis", "haute"],
+        ["14h00–15h00", "ESH", "Chapitre 15", "35 cartes Anki", "max"],
+        ["15h00–15h45", "ESH", "Bonne copie croissance", "Transitions + exemples + structure cachée", "haute"],
+        ["15h45–16h00", "Pause", "Pause courte", "Coupure", "moyenne"],
+        ["16h00–17h00", "Philo", "Anki cours", "Mettre une partie du cours sur Anki + apprendre distinctions", "haute"],
+        ["17h15–18h00", "Philo", "Livre", "Exemples + transitions + articulations de thèses", "haute"],
+        ["18h00–18h15", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["18h15–19h15", "Lettres", "Synthèse BCE 1", "Reprise au propre : intro + plan + transitions", "haute"],
+        ["19h15–19h45", "Lettres", "Bonne copie BCE", "Reformulations efficaces", "haute"],
+        ["20h15–20h45", "Pause", "Pause courte", "Coupure", "moyenne"],
+        ["20h45–21h45", "ESH", "Chapitre 16", "35 cartes Anki", "max"]
       ]},
-      { date: "Samedi — Semaine 1", phase: "Reconstruction", focus: "DS6 + ESH 15", tasks: [
-        ["14h00–16h00", "Maths", "DS6 complet", "Sujet en autonomie", "max"],
-        ["16h30–18h00", "Maths", "Correction DS6", "Correction active + carnet d’erreurs", "max"],
-        ["21h00–22h00", "ESH", "Chapitre 15", "Anki + 1 plan rapide", "haute"]
+      { date: "Lundi 25 mai", phase: "Reconstruction", focus: "ESH 15 + applications linéaires", tasks: [
+        ["16h45–17h15", "Pause", "Décompression", "Coupure après les cours", "moyenne"],
+        ["17h15–18h15", "ESH", "Chapitre 15", "35 cartes restantes", "max"],
+        ["18h15–18h45", "ESH", "Bonne copie", "Transitions + citations + articulation logique", "haute"],
+        ["19h30–20h15", "Maths", "Chapitre 18 — Applications linéaires", "Anki cours", "max"],
+        ["20h15–21h00", "Maths", "TD Chapitre 18", "Ex 1 + Ex 2 + Ex 6", "max"],
+        ["21h00–21h15", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["21h15–22h00", "Maths", "Questions classiques", "Noyau + image + applications linéaires", "haute"]
       ]},
-      { date: "Dimanche — Semaine 1", phase: "Matières secondaires", focus: "Langues, séries, croissance, philo, lettres", tasks: [
-        ["9h00–9h45", "Espagnol", "Erreurs DS + conjugaison", "Correction DS + 20 formes de conjugaison", "haute"],
-        ["9h45–10h30", "Anglais", "DS premium", "1 DS repris + formulations premium", "moyenne"],
-        ["10h45–12h15", "Maths", "Chap 15 — Séries", "Cours Anki + 5 exercices concours", "max"],
-        ["14h00–16h00", "ESH", "Croissance", "Bonne copie + plan détaillé", "max"],
-        ["16h15–17h15", "Philo", "Cours + livre", "Anki + 3 distinctions + transitions", "haute"],
-        ["17h30–19h00", "Lettres", "Synthèse BCE 1", "Reprise au propre + bonne copie", "haute"]
+      { date: "Mardi 26 mai", phase: "Reconstruction", focus: "ESH 16 + matrices d’applications", tasks: [
+        ["16h45–17h15", "Pause", "Décompression", "Coupure après les cours", "moyenne"],
+        ["17h15–18h15", "ESH", "Chapitre 16", "35 cartes Anki", "max"],
+        ["18h15–18h45", "ESH", "Bonne copie", "Structure dissertation + problématisation", "haute"],
+        ["19h30–20h15", "Maths", "Chapitre 19", "Anki cours", "max"],
+        ["20h15–21h00", "Maths", "Chapitre 19", "5 exercices matrices d’applications linéaires", "max"],
+        ["21h00–21h15", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["21h15–22h00", "Maths", "Questions classiques", "Matrices de passage + matrices associées + rang", "haute"]
       ]},
-      { date: "Lundi — Semaine 2", phase: "Mode concours", focus: "Probas + ESH 16", tasks: [
-        ["17h15–18h45", "ESH", "Chapitre 16 + Anki chap 3", "Cours + première moitié chap 3 sur Anki", "max"],
-        ["19h30–21h00", "Maths", "Chap 16 + Chap 17", "Cours Anki + exercices probas/VAR", "max"],
-        ["21h15–22h15", "Maths", "DS probabilités", "Sujet ciblé + correction active", "haute"]
+      { date: "Mercredi 27 mai", phase: "Consolidation", focus: "Révisions ESH + analyse-synthèse", tasks: [
+        ["16h15–16h45", "Pause", "Décompression", "Coupure après les cours", "moyenne"],
+        ["16h45–17h30", "ESH", "Révisions Anki", "Chapitres 13–14", "max"],
+        ["17h30–18h00", "ESH", "Bonne copie", "Intro + transitions + problématique", "haute"],
+        ["19h00–19h45", "Maths", "Analyse-synthèse", "Méthode", "max"],
+        ["19h45–20h30", "Maths", "Questions classiques analyse-synthèse", "Existence/unicité + suites définies implicitement", "haute"],
+        ["20h30–20h45", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["20h45–21h30", "Maths", "DS anciens", "Erreurs analyse", "haute"],
+        ["21h30–22h00", "Maths", "Relecture théorèmes", "Équivalents + séries + intégration", "haute"]
       ]},
-      { date: "Mardi — Semaine 2", phase: "Mode concours", focus: "DS7 + ESH global", tasks: [
-        ["17h15–18h45", "ESH", "Chapitres 13–16 + Anki chap 3", "Feuille blanche + deuxième moitié chap 3 sur Anki", "max"],
-        ["19h30–21h00", "Maths", "DS7 complet", "Sujet en conditions raccourcies", "max"],
-        ["21h15–22h15", "Maths", "Correction DS7", "Correction active + questions à refaire", "max"]
+      { date: "Jeudi 28 mai", phase: "Consolidation", focus: "Intégration + ESH 15/16", tasks: [
+        ["16h45–17h15", "Pause", "Décompression", "Coupure après les cours", "moyenne"],
+        ["17h15–18h00", "Maths", "Chapitre 11 — Intégration", "Anki cours", "max"],
+        ["18h00–18h45", "Maths", "TD Chapitre 11", "Ex 1 : a, e, g + Ex 2", "max"],
+        ["19h30–20h15", "Maths", "Questions classiques", "IPP + suites intégrales + sommes de Riemann", "haute"],
+        ["20h15–20h45", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["20h45–21h30", "ESH", "Révisions Anki", "Chapitres 15–16", "max"],
+        ["21h30–22h15", "ESH", "Bonne copie croissance", "Structure détaillée + transitions", "haute"]
       ]},
-      { date: "Mercredi — Semaine 2", phase: "Mode concours", focus: "Chapitres récents + bonnes copies", tasks: [
-        ["16h15–17h45", "ESH", "Bonnes copies + Anki chap 4", "Bonne copie + première moitié chap 4 sur Anki", "haute"],
-        ["19h00–20h30", "Maths", "Chapitres récents", "Exercices courts chap 14–18", "max"],
-        ["20h45–22h00", "Maths", "Questions classiques", "Séries/rang/équivalents/VAR", "haute"]
+      { date: "Vendredi 29 mai", phase: "Consolidation", focus: "Probas finies + ESH global", tasks: [
+        ["13h30–14h00", "Pause", "Décompression", "Coupure après les cours", "moyenne"],
+        ["14h00–14h45", "Maths", "Chapitre 9 — Probabilités finies", "Anki cours", "max"],
+        ["14h45–15h45", "Maths", "TD Chapitre 9", "Ex 5 + Ex 6 + Ex 14", "max"],
+        ["15h45–16h00", "Pause", "Pause courte", "Coupure", "moyenne"],
+        ["16h00–16h45", "Maths", "Questions classiques", "Chaînes probabilistes + indépendance + espérance", "haute"],
+        ["16h45–17h15", "Maths", "DS anciens", "Erreurs récurrentes", "haute"],
+        ["20h15–20h45", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["20h45–21h30", "ESH", "Révisions Anki", "Chapitres 13–16", "max"],
+        ["21h30–22h15", "ESH", "Bonne copie", "Transitions + citations + mécanismes", "haute"]
       ]},
-      { date: "Jeudi — Semaine 2", phase: "Mode concours", focus: "Analyse-synthèse + croissance", tasks: [
-        ["17h15–18h45", "Maths", "Analyse-synthèse n°2", "Sujet proche concours", "max"],
-        ["19h30–20h30", "Maths", "Correction analyse-synthèse", "Correction + automatismes", "haute"],
-        ["20h45–22h00", "ESH", "Sujet croissance + Anki chap 4", "Plan détaillé + deuxième moitié chap 4 sur Anki", "max"]
+      { date: "Samedi 30 mai", phase: "Simulation", focus: "DS9 + ESH", tasks: [
+        ["13h30–14h00", "Pause", "Décompression", "Coupure avant DS", "moyenne"],
+        ["14h00–16h00", "Maths", "DS9 complet", "Conditions semi-réelles", "max"],
+        ["16h00–16h30", "Pause", "Pause longue", "Coupure complète", "moyenne"],
+        ["16h30–17h30", "Maths", "Correction DS9", "Erreurs majeures + rédaction", "max"],
+        ["17h30–18h00", "Maths", "Carnet d’erreurs", "Synthèse des fautes", "haute"],
+        ["20h15–20h45", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["20h45–21h30", "ESH", "Révisions", "Auteurs + statistiques + mécanismes", "max"],
+        ["21h30–22h15", "ESH", "Bonne copie concours", "Structure + problématisation", "haute"]
       ]},
-      { date: "Vendredi — Semaine 2", phase: "Mode concours", focus: "Chapitres difficiles + ESH global", tasks: [
-        ["14h00–15h30", "Maths", "Chapitres difficiles", "8 questions ciblées", "max"],
-        ["15h50–17h00", "Maths", "Correction active", "Carnet d’erreurs + questions non maîtrisées", "haute"],
-        ["21h00–22h00", "ESH", "Révisions globales + Anki chap 5", "Anki 13–16 + première moitié chap 5", "max"]
+      { date: "Dimanche 31 mai", phase: "Simulation", focus: "DS10 + matières secondaires", tasks: [
+        ["9h00–9h45", "Espagnol", "Chili", "20 cartes Anki + dates/personnages clés", "haute"],
+        ["9h45–10h30", "Espagnol", "Conjugaison", "Révision globale + erreurs fréquentes", "haute"],
+        ["10h30–10h45", "Pause", "Pause courte", "Coupure", "moyenne"],
+        ["10h45–11h30", "Anglais", "DS 2", "Formulations premium + figures de style", "haute"],
+        ["11h30–12h15", "Anglais", "Civilisation", "Exemples mobilisables + références culturelles", "haute"],
+        ["14h00–16h00", "Maths", "DS10 complet", "Conditions semi-réelles", "max"],
+        ["16h00–16h30", "Pause", "Pause longue", "Coupure complète", "moyenne"],
+        ["16h30–17h15", "Maths", "Correction DS10", "Erreurs majeures", "max"],
+        ["17h15–18h00", "Philo", "Anki + transitions", "Distinctions + articulations logiques", "haute"],
+        ["18h00–18h15", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["18h15–19h00", "Lettres", "Synthèse BCE 2", "Reprise au propre", "haute"],
+        ["19h00–19h30", "Lettres", "Bonne copie BCE", "Reformulations + structure cachée", "haute"],
+        ["20h15–20h45", "Pause", "Pause courte", "Coupure", "moyenne"],
+        ["20h45–21h30", "ESH", "Révisions globales", "Chapitres 13–16", "max"],
+        ["21h30–22h15", "ESH", "Bonne copie finale", "Intro + conclusion + transitions fortes", "haute"]
       ]},
-      { date: "Samedi — Semaine 2", phase: "Mode performance", focus: "DS8 + bonnes copies ESH", tasks: [
-        ["14h00–16h00", "Maths", "DS8 complet", "Sujet en autonomie", "max"],
-        ["16h30–18h00", "Maths", "Correction DS8", "Correction active + carnet final", "max"],
-        ["21h00–22h00", "ESH", "Bonnes copies + Anki chap 5", "Bonne copie + deuxième moitié chap 5 sur Anki", "haute"]
-      ]},
-      { date: "Dimanche — Semaine 2", phase: "Réglage final", focus: "Toutes matières", tasks: [
-        ["9h00–9h45", "Espagnol", "Conjugaison + Chili", "20 formes + 10 cartes Chili", "haute"],
-        ["9h45–10h30", "Anglais", "DS premium + civi", "1 DS repris + figures de style", "moyenne"],
-        ["10h45–12h15", "Maths", "Relecture active globale", "Carnet d’erreurs + 5 questions rentables", "max"],
-        ["14h00–16h00", "ESH", "Révisions finales", "Feuille blanche 13–16 + plans rapides", "max"],
-        ["16h15–17h15", "Philo", "Anki + copies", "Anki + bonne copie + transitions", "haute"],
-        ["17h30–19h00", "Lettres", "Synthèse BCE 2", "Reprise au propre + bonne copie", "haute"]
+      { date: "Lundi 1 juin", phase: "Activation légère", focus: "Erreurs + sommeil", tasks: [
+        ["16h45–17h15", "Pause", "Décompression", "Coupure après les cours", "moyenne"],
+        ["17h15–18h00", "Maths", "Carnet d’erreurs", "Relecture complète", "max"],
+        ["18h00–18h45", "Maths", "Questions classiques concours", "Équivalents + séries + probabilités + rang", "haute"],
+        ["19h30–20h15", "Maths", "Théorèmes", "Réactivation rapide", "haute"],
+        ["20h15–20h45", "Pause", "Dîner", "Pause dîner", "moyenne"],
+        ["20h45–21h30", "ESH", "Cartes difficiles", "Chapitres 13–16 : oublis fréquents uniquement", "max"],
+        ["21h30–22h00", "Pause", "Préparation sommeil", "Détente légère", "moyenne"]
       ]}
     ];
 
